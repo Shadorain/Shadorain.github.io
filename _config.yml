@@ -33,7 +33,18 @@ theme: "just-the-docs"
 plugins:
   - jekyll-feed
 
+# -- Configuration -- #
+## - Misc - ##
 logo: "/assets/images/logo.png"
+search_enabled: true
+## - Aux Link - ##
+# Top right hand link
+aux_links:
+  "Just the Docs on GitHub":
+    - "//github.com/Shadorain/"
+# Open in new tab
+aux_links_new_tab: true
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
