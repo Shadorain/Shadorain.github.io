@@ -1,10 +1,10 @@
 ---
 layout: default
 title: Home
-nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+nav_order: 0
+description: "This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C and Haskell languages, Emacs+Vim, and low level exploitation/reversing."
 permalink: /
-last_modified_date: 2020-04-27T17:54:08+0000
+last_modified_date: 2020-07-27T17:54:08+0000
 ---
 
 # Focus on writing good documentation
@@ -13,7 +13,7 @@ last_modified_date: 2020-04-27T17:54:08+0000
 Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages.
 {: .fs-6 .fw-300 }
 
-[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/pmarsceill/just-the-docs){: .btn .fs-5 .mb-4 .mb-md-0 }
+[My Blog]({{ site.baseurl }}{% link docs/blog.md %}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [Check out my GitHub](https://github.com/Shadorain/){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
