@@ -47,7 +47,7 @@ I'm quite an extremist in my tastes and technology philosophy.
 - Purple is the best color haha!
 
 ### Security
-I love all things low level. Whether that is C language or Assembly. Within security topic, Reversing and Binary Exploitation have been lethaly intriguing to me. They are what i plan to study mainly and love doing the most with in CTF's.  
+I love all things low level (low level meaning as close to the machine code as one can get). Whether that is C language or Assembly. Within security topic, Reversing and Binary Exploitation have been lethaly intriguing to me. They are what i plan to study mainly and love doing the most with in CTF's.  
 I'm not incopetent in other sects of security, all though I dont enjoy them as much, I understand cryptography and forensics a bit as well as other things. None of which are as cool as rev and binexp though!!
 
 ---

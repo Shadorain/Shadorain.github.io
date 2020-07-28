@@ -2,7 +2,7 @@
 layout: default
 title: Home
 nav_order: 0
-description: "This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C and Haskell languages, Emacs+Vim, and low level exploitation/reversing."
+description: "This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C and Haskell languages, Emacs+Vim, and low level (closer to binary) exploitation/reversing."
 permalink: /
 last_modified_date: 2020-07-27T17:54:08+0000
 ---
