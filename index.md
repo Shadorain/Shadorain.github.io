@@ -23,10 +23,10 @@ This site shouldnt be too complicated to navigate.
 Click the button above or the menu on the side named `My Blog` to get to my blog.
 Other things will come, some ideas are down below! My contact info is at the bottom of [About]({{site.baseurl}}{% link about.md %})
 
-
 ## Site Ideas
 - Host a CTF on here, or atleast challenges!
 - Discussion Forum
 - Coding competitions?
 - And some more to come...
 
+<img src="/assets/images/logo.png" style="position:relative;left:+100px;width:400px;height:400px;">
