@@ -1,0 +1,34 @@
+title: jekyll-rtd-theme
+lang: en-US
+description: Just another jekyll theme
+
+edit: true
+
+copyright:
+  revision: true
+
+addons:
+  - github
+  - gems
+  - analytics
+
+addons_branch: true
+
+theme: null # disable pages default theme
+
+# use front matter sort
+readme_index:
+  with_frontmatter: true
+
+sass:
+  style: compressed
+
+exclude:
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - deps.sh
+  - CODE_OF_CONDUCT.md
+  - LICENSE
+  - requirements.txt
+  - jekyll-rtd-theme.gemspec
