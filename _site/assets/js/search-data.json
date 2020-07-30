@@ -41,76 +41,106 @@
     "url": "http://localhost:4000/docs/blog/",
     "relUrl": "/docs/blog/"
   },"7": {
+    "doc": "Exploiting LXD",
+    "title": "Exploiting LXD",
+    "content": " ",
+    "url": "http://localhost:4000/blog/Security/Exploiting-LXD/",
+    "relUrl": "/blog/Security/Exploiting-LXD/"
+  },"8": {
+    "doc": "Exploiting LXD",
+    "title": "Table of contents",
+    "content": ". | What is LXD? | Exploitation . | Checks | . | . ",
+    "url": "http://localhost:4000/blog/Security/Exploiting-LXD/#table-of-contents",
+    "relUrl": "/blog/Security/Exploiting-LXD/#table-of-contents"
+  },"9": {
+    "doc": "Exploiting LXD",
+    "title": "What is LXD?",
+    "content": " ",
+    "url": "http://localhost:4000/blog/Security/Exploiting-LXD/#what-is-lxd",
+    "relUrl": "/blog/Security/Exploiting-LXD/#what-is-lxd"
+  },"10": {
+    "doc": "Exploiting LXD",
+    "title": "Exploitation",
+    "content": "Checks . First check if LXD is even on the machine you are attempting to attack. You can do this by running id: uid=1000(shado) gid=1000(shado) groups=1000(shado),4(adm),24(cdrom),30(dip),46(plugdev),116(lxd) . Test https://www.hackingarticles.in/lxd-privilege-escalation/ . ",
+    "url": "http://localhost:4000/blog/Security/Exploiting-LXD/#exploitation",
+    "relUrl": "/blog/Security/Exploiting-LXD/#exploitation"
+  },"11": {
     "doc": "C Language",
     "title": "C Language",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/CLang/",
     "relUrl": "/docs/blog/CLang/"
-  },"8": {
+  },"12": {
     "doc": "LaTeX",
     "title": "LaTeX",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Latex/",
     "relUrl": "/docs/blog/Latex/"
-  },"9": {
+  },"13": {
     "doc": "Emacs",
     "title": "Emacs",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Emacs/",
     "relUrl": "/docs/blog/Emacs/"
-  },"10": {
+  },"14": {
     "doc": "Linux",
     "title": "Linux",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Linux/",
     "relUrl": "/docs/blog/Linux/"
-  },"11": {
+  },"15": {
     "doc": "Window Managers",
     "title": "Window Managers",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Window_Managers/",
     "relUrl": "/docs/blog/Window_Managers/"
-  },"12": {
+  },"16": {
     "doc": "Haskell",
     "title": "Haskell",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Haskell/",
     "relUrl": "/docs/blog/Haskell/"
-  },"13": {
+  },"17": {
     "doc": "Vim / Neovim",
     "title": "Vim / Neovim",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Vim/",
     "relUrl": "/docs/blog/Vim/"
-  },"14": {
+  },"18": {
     "doc": "Security",
     "title": "Security",
     "content": " ",
     "url": "http://localhost:4000/docs/blog/Security/",
     "relUrl": "/docs/blog/Security/"
-  },"15": {
+  },"19": {
     "doc": "Home",
     "title": "Shadohub, the hub for shadows!",
     "content": "Hello! Welcome to my site! Here i cover some cool topics in my blog, and also hope to grow this site to be much more as well! . My Blog Check out my GitHub . ",
     "url": "http://localhost:4000/#shadohub-the-hub-for-shadows",
     "relUrl": "/#shadohub-the-hub-for-shadows"
-  },"16": {
+  },"20": {
     "doc": "Home",
     "title": "Getting started",
     "content": "This site shouldnt be too complicated to navigate. Click the button above or the menu on the side named My Blog to get to my blog. Other things will come, some ideas are down below! My contact info is at the bottom of About . ",
     "url": "http://localhost:4000/#getting-started",
     "relUrl": "/#getting-started"
-  },"17": {
+  },"21": {
     "doc": "Home",
     "title": "Site Ideas",
     "content": ". | Host a CTF on here, or atleast challenges! | Discussion Forum | Coding competitions? | And some more to come… | . ",
     "url": "http://localhost:4000/#site-ideas",
     "relUrl": "/#site-ideas"
-  },"18": {
+  },"22": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "http://localhost:4000/",
     "relUrl": "/"
+  },"23": {
+    "doc": "Test",
+    "title": "Test",
+    "content": " ",
+    "url": "http://localhost:4000/docs/blog/CLang/Test/",
+    "relUrl": "/docs/blog/CLang/Test/"
   }
 }
