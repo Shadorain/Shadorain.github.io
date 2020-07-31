@@ -1,18 +1,20 @@
-title: jekyll-rtd-theme
+title: Shadohub
 lang: en-US
-description: Just another jekyll theme
+description: This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C and Haskell languages, Emacs+Vim, and low level (closer to binary) exploitation/reversing.
 
 edit: true
 
 copyright:
   revision: true
+# logo: assets/images/logo.png
 
 addons:
   - github
   - gems
   - analytics
+addons_branch: false
 
-addons_branch: true
+rougify: github
 
 theme: null # disable pages default theme
 
@@ -23,6 +25,22 @@ readme_index:
 sass:
   style: compressed
 
+# fluid: true
+
+## -- Copyright -- ##
+author: "Shadorain"
+copyright: 
+  since: 2020
+  revision: false
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+      author: "Shadorain"
+
 exclude:
   - Makefile
   - Gemfile
@@ -32,3 +50,4 @@ exclude:
   - LICENSE
   - requirements.txt
   - jekyll-rtd-theme.gemspec
+  - README.md
