@@ -4,8 +4,6 @@ description: This site is meant to be for sharing my daily discoveries in the va
 
 edit: true
 
-copyright:
-  revision: true
 # logo: assets/images/logo.png
 
 addons:
@@ -28,7 +26,7 @@ sass:
 # fluid: true
 
 ## -- Copyright -- ##
-author: "Shadorain"
+author: "Jordan Ferraris"
 copyright: 
   since: 2020
   revision: false

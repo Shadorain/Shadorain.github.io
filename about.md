@@ -20,18 +20,11 @@ Christ is my Savior, and He will stay that for all of eternity. Feel free to ema
 ---
 
 ## Who am I
-<dl>
-  <dt>Name</dt>
-  <dd>Jordan Ferraris</dd>
-  <dt>Born</dt>
-  <dd>Lol you dont need to know that!</dd>
-  <dt>School</dt>
-  <dd>Geneva College</dd>
-  <dt>Year</dt>
-  <dd>Sophomore</dd>
-  <dt>Studies</dt>
-  <dd>Computer Science with a masters in Cyber Sec (with a minor in Psychology actually!), most of my studies though are solo</dd>
-</dl>
+  **Name:**      Jordan Ferraris  
+  **Age:**       19  
+  **School:**    Geneva College  
+  **Year:**      Sophomore  
+  **Studies:** Computer Science with a masters in Cyber Sec (with a minor in Psychology actually!), most of my studies though are solo
 
 ---
 
@@ -41,7 +34,7 @@ I currently run Arch linux as my main operating system, even though I would much
 I'm quite an extremist in my tastes and technology philosophy.  
 - Linux > All other OS's
 - Window Managers > Desktop Environments
-- Tiling > Floating (of course!)
+- Tiling > Floating windows (of course!)
 - Vim + Emacs > All other editors (especially vsc)
 - Purple is the best color haha!
 
