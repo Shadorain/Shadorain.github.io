@@ -19,7 +19,8 @@ a:hover { color: #1ea69d; }
 // Horizontal rule
 hr { border-color: #943d84; }
 // Code blocks
-.rst-content code {box-shadow: 0.75px 0.75px 0.75px 0.75px #1b1b29, 0.75px 0.75px 0.75px 0.75px rgba(0,0,0,.1); border-radius: 4px; background: #2f2f4a; border: 1px solid darken(#2f2f4a, 3%); }
+.rst-content code {box-shadow: 0.75px 0.75px 0.75px 0.75px #1b1b29, 0.75px 0.75px 0.75px 0.75px rgba(0,0,0,.1); border-radius: 4px; background: darken(#2f2f4a, 3%); border: 1px solid darken(#2f2f4a, 3%); }
+.rst-content code.literal, .rst-content tt.literal { color: darken(#329090, 1%); text-shadow: 0.2px 0.2px #000000; } //#e74c3c
 // Title
 a.icon.icon-home { color: #d9bff2; font-size: 110%; }
 // Buttons
