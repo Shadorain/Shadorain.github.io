@@ -26,4 +26,4 @@ Other things will come, some ideas are down below! My contact info is at the bot
 - Coding competitions?
 - And some more to come...
 
-<img src="/assets/images/logo.png" style="position:relative;left:+330px;width:400px;height:400px;">
+<img src="/assets/images/logo.png" style="display:block;margin-left:auto;margin-right:auto;width:50%;">
