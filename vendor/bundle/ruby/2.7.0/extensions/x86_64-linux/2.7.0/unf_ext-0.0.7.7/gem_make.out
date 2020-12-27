@@ -1,0 +1,16 @@
+current directory: /home/shadow/Shadorain.github.io/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.7.7/ext/unf_ext
+/usr/bin/ruby -I /usr/lib/ruby/2.7.0 -r ./siteconf20201227-20688-pxdp2x.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /home/shadow/Shadorain.github.io/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.7.7/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /home/shadow/Shadorain.github.io/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.7.7/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.so
+
+current directory: /home/shadow/Shadorain.github.io/vendor/bundle/ruby/2.7.0/gems/unf_ext-0.0.7.7/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20201227-20688-1d08cps

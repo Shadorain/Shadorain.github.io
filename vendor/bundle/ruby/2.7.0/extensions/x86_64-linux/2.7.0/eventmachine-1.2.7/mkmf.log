@@ -1,0 +1,11 @@
+"cc -o conftest -I/usr/include/ruby-2.7.0/x86_64-linux -I/usr/include/ruby-2.7.0/ruby/backward -I/usr/include/ruby-2.7.0 -I.     -fno-omit-frame-pointer -fno-strict-aliasing   -fstack-clash-protection -D_FORTIFY_SOURCE=2 -mtune=generic -O2 -pipe   -g -fno-omit-frame-pointer -fno-strict-aliasing -fPIC conftest.c  -L. -L/usr/lib -L. -Wl,-z,relro -Wl,-z,now -Wl,--as-needed     -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -lruby  -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
