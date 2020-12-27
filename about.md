@@ -24,23 +24,22 @@ Christ is my Savior, and He will stay that for all of eternity. Feel free to ema
   **Age:**       19  
   **School:**    Geneva College  
   **Year:**      Sophomore  
-  **Studies:** Computer Science with a masters in Cyber Sec (with a minor in Psychology actually!), most of my studies though are solo
+  **Studies:** Computer Science with a masters in Cyber Sec, most of my studies though are solo
 
 ---
 
 ## Hobbies
 ### What i run
-I currently run Arch linux as my main operating system, even though I would much rather be on LFS. One day when its actually viable as a daily driver! I enjoy ricing my system up quite alot, gotta be pretty (pretty good too)! 
-I'm quite an extremist in my tastes and technology philosophy.  
-- Linux > All other OS's
-- Window Managers > Desktop Environments
-- Tiling > Floating windows (of course!)
-- Vim + Emacs > All other editors (especially vsc)
-- Purple is the best color haha!
+Currently, I dual boot Gentoo with Void Linux, both of which are fabulous OS's and quite minimal. Gentoo intrigues me daily with its solely source based repositories allowing for fully unique binaries in my system which increases security and much more. I enjoy ricing my system up quite alot as well, gotta be pretty (pretty good too)! 
+Here is a breakdown:
+- Linux (custom kernel on gentoo)
+- Tiling Window Managers (Xmonad[main], dwm, bspwm)
+- Vim/Neovim for all, but Emacs Org-mode for school or notes
+- Purple is my favorite color in almost all shades so I created a custom colorscheme to match this!
 
 ### Security
-I love all things low level (low level meaning as close to the machine code as one can get). Whether that is C language or Assembly. Within security topic, Reversing and Binary Exploitation have been lethaly intriguing to me. They are what i plan to study mainly and love doing the most with in CTF's.  
-I'm not incopetent in other sects of security, all though I dont enjoy them as much, I understand cryptography and forensics a bit as well as other things. None of which are as cool as rev and binexp though!!
+I love all things low level (low level meaning as close to the machine code as one can get). Whether that is C language or Assembly. Within security topic, Reversing and Binary Exploitation have been quite intriguing to me. Either this or Kernel/Driver development is what I would like to pursue.
+I'm not incopetent in other sects of security though, I understand networking and general penetration testing well also but I mainly stick to the more Computer Science geared side of Security.
 
 ---
 
@@ -48,18 +47,20 @@ I'm not incopetent in other sects of security, all though I dont enjoy them as m
 <dl>
   <dt>GitHub</dt>
   <dd><a href="https://github.com/Shadorain/">Shadorain</a></dd>
-  <dt>Discord</dt>
-  <dd>Shadorain#4182</dd>
   <dt>Emails</dt>
   <dd><a href="mailto: shadorain7517@gmail.com">Common</a><br>
       <a href="mailto: jordanf7517@gmail.com">Personal</a></dd>
+  <dt>Phone</dt>
+  <dd>201-841-8296</dd>
+  <dt>LinkedIn</dt>
+  <dd><a href="https://www.linkedin.com/in/jordan-ferraris-8b3219188/">Jordan Ferraris</a></dd>
+  <dt>Stack Overflow</dt>
+  <dd><a href="https://stackoverflow.com/users/13722108/shadorain">Shadorain</a></dd>
+  <dt>Discord</dt>
+  <dd>https://discordapp.com/users/Shadorain#4182</dd>
   <dt>IRC (Freenode)</dt>
   <dd>Shadorain / Shadowraith / ShadorainPhone</dd>
-  <dt>Phone</dt>
-  <dd>201-841-8296: I just ask you dont abuse this one :)</dd>
   <dt>Hack the Box</dt>
   <dd><script src="https://www.hackthebox.eu/badge/85748"></script>
       Lol dont make fun of my low score, i havent done much in small amounts of time so my rank keeps resetting </dd>
-  <dt>LinkedIn</dt>
-  <dd><a href="https://www.linkedin.com/in/jordan-ferraris-8b3219188/">Jordan Ferraris</a></dd>
 </dl>
