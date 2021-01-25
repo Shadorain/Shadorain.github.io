@@ -1,5 +1,14 @@
-HTB Challenge :: Mobile : Cat
-===============================
+---
+layout: default
+title: Cat
+nav_order: 5
+permalink: /blog/HackTheBox/Cat
+parent: HackTheBox
+grand_parent: My Blog
+has_children: false
+---
+
+# HTB Challenge :: Mobile : Cat
 
 So to start, lets read our small hint for this challenge: "Easy leaks", nevermind
 that isn't helpful haha! Let's just unzip the file we are given:
@@ -8,6 +17,8 @@ Let's try running `file` on it... `cat.ab: Android Backup, version 5, Compressed
 Not-Encrypted`. Usually file can only help us if the file has a specific header
 (with a magic number) that tells what type and info the file has. This file is an
 Androis backup file! This may help us later in our research.
+
+## Exploit
 
 Why not try Googling then! Looked up how to extract an ab file and found a very
 helpful [stackoverflow link](https://stackoverflow.com/questions/18533567/how-to-extract-or-unpack-an-ab-file-android-backup-file)
