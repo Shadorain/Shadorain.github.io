@@ -15,4 +15,4 @@ title: Linux
 
 ## Securing Linux ##
 
-- [Hardening Linux](/blog/Linux/Hardening-Linux/)
+- [Hardening Linux](/blog/Linux/Hardening-Linux)
