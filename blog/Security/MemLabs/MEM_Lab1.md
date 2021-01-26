@@ -9,6 +9,7 @@ has_children: false
 ---
 
 # MemLabs Lab 1 : Beginner's Luck #
+{: .no_toc }
 
 This is the first Lab that we are totally on our own for in this series of challenges
 so lets get to it! Let's first read our little prompt/hint:
@@ -23,7 +24,17 @@ Ok so it looks like, a command prompt opened right when the system crashed,
 potential malware? Wonder what that means that "she was trying to draw something",
 but this has to be a useful hint.
 
-## Find Profile ##
+## Table of contents ##
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+---
+
+## Flag 1 ##
+
+### Find Profile ###
 
 Lets first get the profile of this device from the memory dump, volatility is the
 tool we will be using for this Lab and all future ones. To do this run:
@@ -42,13 +53,14 @@ AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
 Looking for the profiles that volatility finds, we can test with different suggested
 ones, but lets just use the first in our commands.
 
-## Process List ##
+### Process List ###
 
-Now that we have our profile, its time to see what processes are running on this machine,
-the main ones I'm looking for are `cmd.exe` (Windows Command Prompt), `explorer.exe`
-(Internet Explorer) to see if there are any browser cache files, and something to do with
-drawing, not exactly sure what that will look like yet, maybe `paint.exe`? Lets start with
-using the famous and handy `pslist` plugin in volatility:
+Now that we have our profile, its time to see what processes are running on this
+machine, the main ones I'm looking for are `cmd.exe` (Windows Command Prompt),
+`explorer.exe` (Internet Explorer) to see if there are any browser cache files,
+and something to do with drawing, not exactly sure what that will look like yet,
+maybe `paint.exe`? Lets start with using the famous and handy `pslist` plugin in
+volatility:
 
 ```bash
 ❱ volatility -f *.raw --profile Win7SP1x64 pslist
@@ -71,7 +83,7 @@ to look into those as well. WinRar is open too and I don't exactly know why
 unless it was for extracting malware but that doesnt seem realistic, we can
 look into that later if we lose our trail with the other more obvious processes.
 
-## Command Scan ##
+### Command Scan ###
 
 Next we should look at the different commands running on our `cmd.exe` instance.
 To do this lets run volatility with the `cmdscan` plugin:
@@ -104,7 +116,7 @@ actually but I didn't list it because it didn't seem suspicious started a comman
 here actually, but I'm not exactly sure yet what it is so we will come back to
 this potentially later. For now lets take note of that strange command: `St4G3$1`
 
-### Side Note ###
+#### Side Note ####
 
 Just a little side note... I just realized what this means: `St4G3$1`.
 Look a little closer, try replacing the numbers with letters... Yeah that was a hint
@@ -115,7 +127,7 @@ and I totally missed it earlier, if you noticed it good job!
 That was the hint to tell us we were close to finding stage 1 then! Either way we
 still got it so lets find Stage 2!
 
-## Check stdout ##
+### Check stdout ###
 
 Next, I want to check stdout just incase our processes have been writing to it.
 To do this we will use the `consoles` plugin in volatility:
@@ -161,7 +173,7 @@ Well! It looks like we got our first flag! Be proud, I know it was simple but it
 always nice to see those sweet flags, ya know!? Well, we aren't finished yet silly
 we have two more to figure out! Lets get to some more work!
 
-## Environment Variables ##
+### Environment Variables ###
 
 Why not check if there are any useful or suspicious environment variables! Assuming
 the sister doesn't use computers much, there might be some made by the malicious
@@ -185,7 +197,7 @@ is though a logfile that repeatedly has shown up though that looks to be in a su
 directory `C:\BVTBin\Tests\installpackage\csilogfile.log`, wonder if we could get
 our hands on that. For now lets try a different approach though.
 
-## Hash dump ##
+### Hash dump ###
 
 Lets try getting a hash dump of the passwords on the system currently and try to
 brute force them. To get the hashes lets use the `hashdump` plugin in volatility:
@@ -208,6 +220,89 @@ seems to be common on Windows so lets see first if an online hash search could
 | SmartNet       | smartnet123      |
 | HomeGroupUser  | NotFound         |
 | Alissa Simpson | goodmorningindia |
+
+Well that's saddening, I don't think that any of these are too useful unless we were
+able to get onto the PC via a shell or physically. But that isn't the scope of memory
+forensics so we have to find a different method!
+
+---
+
+## Flag 2 ##
+
+So I ran into quite a ditch pretty fast when attempting different methods to find
+the second flag. Went back to the hint, recalled that there was a crash that occurred
+so I went through all the different crash plugins but none of them supported our
+profile that we were using so I dead ended there, tried almost every other plugin
+as well just trying and seeing if there was any useful or suspicious output, but
+got nothing. Then I finally ran the `memdump` plugin and crashed my entire blackarch
+VM... I ran out of all harddrive space and that caused some wacky issues. So I wanted
+to take a small break, but I just realized that I didnt take a look at all at the
+memdump and that shoot maybe that could actually be useful, because it dumps the
+current memory of each process (or a process u select which I didn't know you could
+do at first). Okay rant over, lets get to work.
+
+Remember how to get PID's from the running processes? Yep `pslist`/`pstree`/etc (in
+volatility) whichever one you want, just get the PID's of the processes that looked
+useful for us. Let's start with `mspaint.exe`: `2424`. Be sure not to simply run
+the `memdump` plugin without checking your system free space, it fills up fast. This
+command will dump `mspaint.exe` to our current directory into a `.dmp` file:
+
+```bash
+# `-p` specifies PID, `-D` is dump directory
+❱ volatility -f *.raw --profile Win7SP1x64 memdump -p 2424 -D .
+```
+
+This is when I found this [amazing resource](https://w00tsec.blogspot.com/2015/02/extracting-raw-pictures-from-memory.html)
+Which gave the most brilliant ideas! Think about what we are trying to do... yep!
+View images essentially, right? So why aren't we using a tool like GIMP to help us
+out to visualize our memory dump. Let's do that! First we have to `mv` (or Rename
+on Win) our `.dmp` file to a `.data` or GIMP wont accept it. Next make sure you have
+GIMP installed and run `gimp 2424.data` and it will open two windows, the one we
+care about for now is the "Load Image from Raw Data" one. And right away switch
+the "Image Type" to `RGB Alpha` so that we can only see the useful data.
+
+Don't hit `Open` yet, we want to find our hidden text first in this dump then we
+can do the rest of what we need. So as this link suggests, because mspaint stores
+its images as BMPs, it most likely will be flipped and upside-down, so that is a
+start. The issue is we don't exactly know what we are looking for yet, maybe text?
+Lets start moving around the three main values there, width and height first, then
+offset (try to avoid the sliders because they increment too fast and will cause
+GIMP to crash).
+
+So for the height, I kept it at around 600-700 just to fill the small window we are
+given as a preview, we hardly need to scroll but if you would want to vertically
+scroll through the memory be sure to set that much higher. The width and offset are
+where it gets confusing. So honestly I've never done this before so I honestly found
+it fascinating just to hold the up arrow in the width box and I noticed a white line
+that stretched accross the screen, but as I kept holding the line would fade and
+a new larger one would show and have like data in it and it eventually became clear
+that that was written text and at about width of `4305px` (assuming it is in pixels),
+> Note: At `3690px` the text is pretty visible here as well, but not enough for reading
+> clearly, so I kept holding the up arrow till the second time it got clearer.
+I finally found what took me hours to find! Some text that looks like complete
+giberish, but wait! I grabbed my laptop and flipped it over and there it was our
+pretty little flag. If we want too we can use offset to make it more seemingly clear
+atleast from my experiments but I'm not exactly sure what it does. Lets hit okay
+now!
+
+In gimp with our image now prepared, lets use some quick tools to make this easy
+for us. The first is in `Tools -> Transformation Tools -> Rotate` or hit `Shift+R`.
+Let's rotate our image 180 degrees. And second, `Tools -> Transformation Tools ->
+Flip` or `Shift+F`. With this tool selected just click on the image in the viewer
+and that should flip it on the y-axis... and lookey here! Is that not our flag!
+
+```
+flag{G00d_BoY_good_girL}
+```
+
+Well done we have gotten the second flag... wow this is only an "Easy" rated
+challenge too, memory forensics is so cool!
+
+---
+
+## Flag 3 ##
+
+---
 
 ## Resources ##
 
