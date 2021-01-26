@@ -19,4 +19,4 @@ has_children: false
 
 ## Memory ##
 
-- [Dynamic Memory Allocation](/blog/CLang/Dynamic-Memory-Allocation/)
+- [Dynamic Memory Allocation](/blog/CLang/Dynamic-Memory-Allocation)
