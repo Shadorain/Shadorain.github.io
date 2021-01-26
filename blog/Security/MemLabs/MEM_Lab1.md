@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MemLabs LAB1 Beginners Luck
+title: "LAB1 : Beginners Luck"
 nav_order: 5
 permalink: /blog/Security/MemLabs/LAB1
 parent: MemLabs
@@ -308,4 +308,5 @@ challenge too, memory forensics is so cool!
 
 - [MemLabs: Lab 1](https://github.com/stuxnet999/MemLabs/tree/master/Lab%201)
 - [Volatility Command list](https://github.com/volatilityfoundation/volatility/wiki/Command-Reference)
+- [Extracting Raw Images from Memory](https://w00tsec.blogspot.com/2015/02/extracting-raw-pictures-from-memory.html)
 
