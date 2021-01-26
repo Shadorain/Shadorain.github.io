@@ -1,14 +1,16 @@
 ---
 layout: default
 title: Hardening Linux
-nav_order: 5
+nav_order: 0
+permalink: /blog/Linux/Hardening-Linux/
 parent: Linux
-has_children: true
+grand_parent: My Blog
+has_children: false
 ---
 
-# Hardening Linux
+# Hardening Linux #
 {: .no_toc }
-##### In this post we take a look at:
+##### In this post we take a look at: #####
 {: .no_toc }
 
 <dl>
@@ -25,7 +27,7 @@ has_children: true
 
 ---
 
-## Table of contents
+## Table of contents ##
 {: .no_toc .text-delta }
 
 - TOC
@@ -33,7 +35,7 @@ has_children: true
 
 ---
 
-### Userspace
+### Userspace ###
 **The userspace is where all our typical applications will run on our machine, so we definitely need to implement security here.**
 There are two FOSS (Free and Open Source) pieces of software that I believe are at the top of the list past SELinux for what we need:
 - AppArmor
@@ -42,7 +44,7 @@ There are two FOSS (Free and Open Source) pieces of software that I believe are 
 To install these, check in your repo what their package names are. On XBPS (Void Linux) they are simply `apparmor` and `firejail`.
 ```
 
-#### Apparmor
+#### Apparmor ####
 {:.no_toc}
 AppArmor is quite self explanatory to set up quite frankly, and honestly the defaults are all you need for a desktop system.
 Let's first check if it is enabled:
@@ -55,7 +57,7 @@ Yes
 
 First, we have to send some commands to our kernel, the simplest way to do this is via GRUB, if you use a different bootloader skip to [Different Bootloader](#different-bootloader).
 
-###### GRUB
+###### GRUB ######
 {:.no_toc}
 ```tip
 Use your editor of choice, I prefer and recommend Neovim which is aliased to `vim` on my system, which I will use throughout all blogposts.
@@ -100,13 +102,13 @@ GRUB_CMDLINE_LINUX_DEFAULT="loglevel=4 slub_debug=P page_poison=1 net.ifnames=0 
 ```
 This will enable the AppArmor module in the kernel from the GRUB bootloader commandline.
 
-###### Different Bootloader
+###### Different Bootloader #####
 {:.no_toc}
 There are quite a large number of bootloader's out there so I will only cover grub here in how to do it, but the options are the same.
 
 Here is a [link](https://wiki.archlinux.org/index.php/Kernel_parameters) on how to send commands to the kernel from different bootloaders. The commands required for AppArmor to run and function are: `apparmor=1` and `security=apparmor`
 
-##### Enable and Enforce
+##### Enable and Enforce #####
 {:.no_toc}
 Now that we have allowed AppArmor from the kernel, its time to Enable and Enforce!
 
@@ -134,7 +136,7 @@ APPARMOR=enforce
 ```
 Save and exit (`ESC :wq`)
 
-##### Finish up
+##### Finish up #####
 {:.no_toc}
 Finally all you have to do is first, reboot your system.
 ```bash
@@ -149,7 +151,7 @@ But this isn't a reliable way of checking, here are two ways (advice using both)
 
 Congratulations, you now have AppArmor installed into your kernel and enforcing security policies on your system. Not so hard after all! There is definitely a lot more too it though so be sure to go through `/etc/apparmor.d/` and add your own application configs.
 
-#### FireJail
+#### FireJail ####
 {:.no_toc}
 *Firejail* is a program that essentially **sandboxes** any program that is run with it which means that the program can only access directly what it needs and nothing else. This is an effective security measure because if an attacker for example is able to exploit your web browser or a page, they cannot go very far because the browser itself is locked to only it's needed files.
 
@@ -162,7 +164,7 @@ This honestly is the only command I use and it has done a good job so far. In my
 
 I yet have noticed any performance issues, everything has run smooth and without errors. The only programs I believe this could cause malfunction would be those that dynamically call to different libraries or similar. Give this one a good tryout though, definitely think it to be quite helpful in adding another layer of security.
 
-#### RKHunter
+#### RKHunter ####
 {:.no_toc}
 *RKHunter* stands for RootKit Hunter, and this is an incredible tool that looks for any signs of rootkit infections on your system.
 ```danger
@@ -199,8 +201,8 @@ These are false positives because after the base system has been installed, thes
 *RKHunter* is a simple and very powerful tool to keep a watchful eye on various system binaries. Be sure to use it after installing anything that just didn't seem fully trust worthy.
 
 
-### Network
-#### Reconfigure DNS
+### Network ###
+#### Reconfigure DNS ####
 {:.no_toc}
 I personally trust Cloudflare to set my DNS to the most. They run `nginx` for their server which is under a *BSD* Liscence, and they promote Free Software alot. On top of this though, their network practically acts like a large VPN, and come with some nice security protocols as well, some being a Firewall and DDOS protection.
 
@@ -220,7 +222,7 @@ nameserver 1.1.1.1
 If you use NetworkManager, you will need to configure it to not reconfigure your 'resolv.conf' on reboot. To do this, add the line `dns=none` under [main] in /etc/NetworkManager/NetworkManager.conf
 ```
 
-#### Setup UFW Firewall
+#### Setup UFW Firewall ####
 {:.no_toc}
 `ufw` is an awesome tool. It stands for "uncomplicated firewall" because for real, it isn't that complicated, but there is a load of great features and tools with it.
 
@@ -271,5 +273,5 @@ If you run *systemd* the command will be along the lines of:
 
 There you have it, your *uncomplicated firewall* is now setup and enabled at startup. There are many more configuration options, but this is plenty enough for the casual desktop user.
 
-### Kernel
+### Kernel ###
 Not yet done myself! Coming soon...
