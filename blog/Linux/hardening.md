@@ -2,7 +2,7 @@
 layout: default
 title: Hardening Linux
 nav_order: 0
-permalink: /blog/Linux/Hardening-Linux/
+permalink: /blog/Linux/Hardening-Linux
 parent: Linux
 grand_parent: My Blog
 has_children: false

@@ -2,18 +2,20 @@
 layout: default
 title: Dynamic Memory Allocation
 nav_order: 5
+permalink: /blog/CLang/Dynamic-Memory-Allocation
 parent: CLang
+grand_parent: My Blog
 has_children: true
 ---
 
-# Dynamic Memory Allocation
+# Dynamic Memory Allocation #
 {: .no_toc }
-### Lets take a look at: *malloc*, *calloc*, *realloc*, and *free*
+### Lets take a look at: *malloc*, *calloc*, *realloc*, and *free* ###
 {: .no_toc }
 
 ---
 
-## Table of contents
+## Table of contents ##
 {: .no_toc .text-delta }
 
 - TOC
@@ -21,13 +23,13 @@ has_children: true
 
 ---
 
-### Malloc :: Memory Allocation
+### Malloc :: Memory Allocation ###
 **Main point**: In essence, allocates one large block of memory.
  - dynamically allocates a single large block of memory with a specified size
  - malloc -> void*
  - Returns a void pointer, castable into any type
 
-##### Example Syntax
+##### Example Syntax #####
 {: .no_toc }
 ```c
 int* ptr = (int*) malloc(100 * sizeof(int));
@@ -42,14 +44,14 @@ Lets pull this apart:
 
 --- 
 
-### Calloc :: Contiguous Allocation
+### Calloc :: Contiguous Allocation ###
 **Main point**: In essence, allocates multiple blocks of memory next to each other (like an array!)
  - dynamically allocates a specific number of blocks of memory of specified type
  - initializes each block with '0'
  - calloc -> void*
  - Returns a void pointer, castable into any type
 
-##### Example Syntax
+##### Example Syntax #####
 {: .no_toc }
 ```c
 float* ptr = (float*) calloc(15, sizeof(float));
@@ -64,12 +66,12 @@ Lets pull this apart:
 
 ---
 
-### Realloc :: Re-Allocation
+### Realloc :: Re-Allocation ###
 **Main point**: In essence, re-allocates what originally was allocated.
  - dynamically change memory allocation of previously allocated memory
  - re-initializes each block with '0'
 
-##### Example Syntax
+##### Example Syntax #####
 {: .no_toc }
 ```c
 char* ptr = (char*) malloc(10 * sizeof(char));
@@ -85,11 +87,11 @@ Lets pull this apart:
 
 ---
 
-### Free
+### Free ###
 **Main point**: In essence, dynamically de-allocates memory.
  - Good practice is to use this when done with allocated memory to save resources
 
-##### Example Syntax
+##### Example Syntax #####
 {: .no_toc }
 ```c
 int* ptr = (int*) malloc(4 * sizeof(int));
@@ -102,10 +104,10 @@ Lets pull this apart:
  
 ---
  
-### Conclusion
+### Conclusion ###
   Hopefully, here I was able to show how important dynamic allocation is to your project that you are working on in the beautiful language of C. Most other languages automatically do all memory operations themselves and make it easy for the programmer, but having this level of control on each bit can both be a wonderful blessing or devastating curse.
 
-#### Simple Summary
+#### Simple Summary ####
 <dl>
   <dt>Malloc</dt>
   <dd>Allocates one large block of memory of a specified bitsize</dd>
@@ -119,7 +121,7 @@ Lets pull this apart:
 
 ---
 
-###### Resources Used
+###### Resources Used ######
 {: .no_toc }
  - [C Reference](https://en.cppreference.com/w/c/memory)
  - [Geeks for Geeks](https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/)
