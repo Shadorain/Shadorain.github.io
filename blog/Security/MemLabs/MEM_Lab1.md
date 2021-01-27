@@ -57,7 +57,7 @@ ones, but lets just use the first in our commands.
 
 Now that we have our profile, its time to see what processes are running on this
 machine, the main ones I'm looking for are `cmd.exe` (Windows Command Prompt),
-`explorer.exe` (Internet Explorer) to see if there are any browser cache files,
+`explorer.exe` (File Explorer) to see if there are any browser cache files,
 and something to do with drawing, not exactly sure what that will look like yet,
 maybe `paint.exe`? Lets start with using the famous and handy `pslist` plugin in
 volatility:
@@ -277,8 +277,10 @@ it fascinating just to hold the up arrow in the width box and I noticed a white 
 that stretched accross the screen, but as I kept holding the line would fade and
 a new larger one would show and have like data in it and it eventually became clear
 that that was written text and at about width of `4305px` (assuming it is in pixels),
+
 > Note: At `3690px` the text is pretty visible here as well, but not enough for reading
 > clearly, so I kept holding the up arrow till the second time it got clearer.
+
 I finally found what took me hours to find! Some text that looks like complete
 giberish, but wait! I grabbed my laptop and flipped it over and there it was our
 pretty little flag. If we want too we can use offset to make it more seemingly clear
@@ -302,7 +304,130 @@ challenge too, memory forensics is so cool!
 
 ## Flag 3 ##
 
+This might be a wild goose chase but the process I'm most suspicious of is
+WinRar. So I'm going to point my attention to that for the time being to maybe
+see if that is what flag 3 is hiding in somewhere. Let's start with a `pstree`
+again to see what initiates WinRAR:
 
+```bash
+❱ volatility -f *.raw --profile Win7SP1x64 pstree
+ 0xfffffa8000f4c670:explorer.exe                     2504   3000     34    825 2019-12-11 14:37:14 UTC+0000
+. 0xfffffa8000f9a4e0:VBoxTray.exe                    2304   2504     14    144 2019-12-11 14:37:14 UTC+0000
+. 0xfffffa8001010b30:WinRAR.exe                      1512   2504      6    207 2019-12-11 14:37:23 UTC+0000
+...
+```
+
+Okay, of course it's `explorer.exe` that is running it WinRAR, we aren't doing
+Linux forensics! Something we haven't run yet is the `cmdline` command to see what
+commands are being run and their arguments, I believe that commands are run in the
+background even if its a GUI application. So lets see if there are any commands being
+run by WinRAR or File Explorer:
+
+```bash
+❱ volatility -f *.raw --profile Win7SP1x64 cmdline
+...
+WinRAR.exe pid:   1512
+Command line : "C:\Program Files\WinRAR\WinRAR.exe" "C:\Users\Alissa Simpson\Documents\Important.rar"
+...
+```
+
+BINGO! Knew WinRAR was something we should look at!! Sweet so now we see that this
+`Important.rar` archive is something we need to take a look at. I wonder how we
+should go about this to find the data that was compressed inside, maybe we can get
+a dump of that archive somehow? Thats the plan! Just found out that there is a command
+called `dumpfiles` that we can point to an offset so lets find where in the memory
+this file is, to do this lets use the `filescan` utility and grep for `Important.rar`:
+
+### Dump Files ###
+
+```bash
+❱ volatility -f *.raw --profile Win7SP1x64 filescan | grep -i "Important.rar"
+0x000000003fa3ebc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fac3bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fb48bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+```
+
+Well, not exactly sure why it matched three times the same exact file, but this
+was the output. So there is our offset: `0x000000003fb48bc0`, lets use the
+`dumpfiles` command with our offset to see what is in this archive!
+
+```bash
+❱ volatility -f *.raw --profile Win7SP1x64 dumpfiles -O 0x000000003fb48bc0 -D .
+DataSectionObject 0x3fb48bc0   None   \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+```
+
+Cool we have the file on our own system now in our current working directory... one
+catch though: the file we just got is NOT a rar archive. Lets first look at the first
+few bits of this file using `xxd`:
+
+```bash
+❱ xxd -l 256 test.dat
+00000000: 5261 7221 1a07 0100 06f7 f70b 0b01 0507  Rar!............
+00000010: 0006 0101 c5c8 8200 6875 feed 1303 02c0  ........hu......
+00000020: 0004 c000 0062 9947 fe80 0000 0343 4d54  .....b.G.....CMT
+00000030: 5061 7373 776f 7264 2069 7320 4e54 4c4d  Password is NTLM
+00000040: 2068 6173 6828 696e 2075 7070 6572 6361   hash(in upperca
+00000050: 7365 2920 6f66 2041 6c69 7373 6127 7320  se) of Alissa's
+00000060: 6163 636f 756e 7420 7061 7373 7764 2e00  account passwd..
+00000070: d9da 17ab 5802 033c 80c7 0204 dde7 0220  ....X..<.......
+00000080: cd37 7c99 8003 0009 666c 6167 332e 706e  .7|.....flag3.pn
+00000090: 6730 0100 030f 6ea9 4771 4d53 547d 380d  g0....n.GqMST}8.
+000000a0: b206 6cd3 e705 fd3e 6972 4a69 fd48 c56d  ..l....>irJi.H.m
+000000b0: fb70 ded8 b735 2ff7 cb5a 4dd0 2f3f ee83  .p...5/..ZM./?..
+000000c0: 0cb0 0a03 02af 48a0 c727 b0d5 0177 13f1  ......H..'...w..
+000000d0: 5921 12f6 2dac eec0 b40c 79df 15e2 e009  Y!..-.....y.....
+000000e0: fc14 4831 0bd6 4f6e 4f0f 4e61 4a28 754c  ..H1..OnO.NaJ(uL
+000000f0: 19f6 ab39 7359 7140 212e cd36 87da 8610  ...9sYq@!..6....
+```
+
+Well would you look at that! We figured out the password for the archive we
+are trying to get into (refer to [Hash Dumps](#hash-dump)) but we have to
+be able to convert this data into a RAR file (shown in the first four bytes:)
+to then extract the encrypted rar and get that png we see (`flag3.png`)
+
+```python
+❱ python2.7
+>> a = "52617221".decode("hex")
+>> print a
+Rar!
+```
+
+### Extracting ###
+
+Welp, I went ahead of myself and realized I messed up slightly. The file we
+retrieved did actually have a RAR header and I noticed that but it totally
+went over my head! The first four bytes of a RAR file always is `5261 7221`
+-> `Rar!` and I showed that above, and rechecked this by creating my own rar,
+but never took it to mind! We don't even have to do any bit changing, we literally
+can just run:
+
+```bash
+❱ unrar x test.dat
+Extracting from test.dat
+Password is NTLM hash(in uppercase) of Alissa's account passwd.
+Enter password (will not be echoed) for flag3.png:
+```
+
+Let's get that hash from above ([Hash Dumps](#hash-dumps)): `F4FF64C8BAAC57D22F22EDC681055BA6`
+Lets convert it to all uppercase.
+
+> **Tip**: if you use vim/nvim like me, try highlighting the hash with visual select
+> mode (`v`) then press `U`, it will uppercase the selected area.
+
+If this doesn't work we can try the cracked hash which is `goodmorningindia`.
+Great the hash worked just like it was supposed to! And our image is now extracted!
+View it and... there you go, flag three is finally complete! We did it! Our first
+full memory forensics challenge on our own! That was super fun, super excited to
+continue on the next and most likely much more challenging labs!
+
+```
+flag{w3ll_3rd_stage_was_easy}
+```
+
+---
+
+Hope you enjoyed this blog, I had a lot of fun doing this challenge and writing
+this post, stay tuned for more to come! Shado out.
 
 ---
 
@@ -310,5 +435,6 @@ challenge too, memory forensics is so cool!
 
 - [MemLabs: Lab 1](https://github.com/stuxnet999/MemLabs/tree/master/Lab%201)
 - [Volatility Command list](https://github.com/volatilityfoundation/volatility/wiki/Command-Reference)
+- [Another Volatility Cheatsheet PDF](https://downloads.volatilityfoundation.org/releases/2.4/CheatSheet_v2.4.pdf)
 - [Extracting Raw Images from Memory](https://w00tsec.blogspot.com/2015/02/extracting-raw-pictures-from-memory.html)
-
+- [Using XXD to Convert dat file to rar](https://whiteheart0.medium.com/retrieving-files-from-memory-dump-34d9fa573033)
