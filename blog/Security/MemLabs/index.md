@@ -21,4 +21,5 @@ has_children: true
 
 ## Labs ##
 
-- [LAB1 : Beginner's Luck](/blog/Security/MemLabs/LAB1/)
+- [LAB1 : Beginner's Luck](/blog/Security/MemLabs/LAB1)
+- [LAB2 : A New World](/blog/Security/MemLabs/LAB2)

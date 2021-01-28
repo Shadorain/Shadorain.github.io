@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "LAB1 : Beginners Luck"
-nav_order: 5
+nav_order: 1
 permalink: /blog/Security/MemLabs/LAB1
 parent: MemLabs
 grand_parent: Security
