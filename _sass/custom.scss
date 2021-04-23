@@ -22,7 +22,7 @@ body { color: #f0deff; } // body { color: #bfaee4; }
 a { color: #8897F4; }
 a:link { color: #8897F4; }
 a:visited { color: #8897F4; }
-a:hover { color: #1ea69d; }
+a:hover { color: lighten(#1ea69d, 15%); }
 // Table
 .rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td, .wy-table-backed, .wy-table-odd td, .wy-table-striped tr:nth-child(2n-1) td { color: #E9729D; background: #212133; }
 .rst-content table.docutils, .wy-table-bordered-all { border: 1px solid #bd93f9; }
@@ -35,17 +35,17 @@ hr { border-color: #bd93f9; } // hr { border-color: #943d84; }
 .rst-content blockquote { color: darken(#bfaee4, 8%); border-left-color: rgb(56, 61, 63); padding: 0 0 0 1em; border-left: .25em solid #5b5f73; background: rgba(0,0,0,0.3); background: linear-gradient(90deg, rgba(0,0,0,0.7021009087228641) 0%, rgba(0,0,0,0.5032213569021359) 70%, rgba(0,0,0,0) 100%); }
 // Code blocks
 .rst-content code {box-shadow: 0.75px 0.75px 0.75px 0.75px #1b1b29, 0.75px 0.75px 0.75px 0.75px rgba(0,0,0,.1); border-radius: 4px; background: darken(#2f2f4a, 3%); border: 1px solid darken(#2f2f4a, 3%); }
-.rst-content code.literal, .rst-content tt.literal { color: darken(#329090, 1%); text-shadow: 0.2px 0.2px #000000; } //#e74c3c
+.rst-content code.literal, .rst-content tt.literal { color: lighten(#1ea69d, 15%); text-shadow: 0.2px 0.2px #000000; } //#e74c3c
 // Title
 a.icon.icon-home { color: lighten(#f0deff, 3%); font-size: 110%; } // color: #d9bff2;
 // Buttons
 .btn:focus { background: #2f2f4a; }
 .btn-neutral { background-color: #2f2f4a !important; color: #E9729D !important; }
 .btn-neutral:visited { background-color: #2f2f4a !important; color: #E9729D !important; }
-.btn-neutral:hover { background-color: lighten(#2f2f4a, 5%) !important; color: #1ea69d !important; }
+.btn-neutral:hover { background-color: lighten(#2f2f4a, 5%) !important; color: lighten(#1ea69d, 15%) !important; }
 .btn { background-color: #2f2f4a; color: #E9729D; border-radius: 1px; box-shadow: rgba(47, 47, 74, 0.5) 0px 4px 12px 0px; border: 1px solid rgba(0,0,0,.1); padding-bottom: 6px; } // 1px 1px 1px 1px #1b1b29, 1px 1px 1px 1px rgba(0,0,0,.1)
 .btn:visited { background-color: #2f2f4a; color: #E9729D; border-radius: 1px; box-shadow: unset; border: 1px solid rgba(0,0,0,.1); }
-.btn:hover { background-color: lighten(#2f2f4a, 5%); color: #1ea69d; border-radius: 1px; box-shadow: rgba(47, 47, 74, 0.5) 0px 2px 6px 0px; border: 1px solid rgba(0,0,0,.1); }
+.btn:hover { background-color: lighten(#2f2f4a, 5%); color: lighten(#1ea69d, 15%); border-radius: 1px; box-shadow: rgba(47, 47, 74, 0.5) 0px 2px 6px 0px; border: 1px solid rgba(0,0,0,.1); }
 // Tree expand icon
 .wy-menu-vertical li span.toctree-expand { 
     color: #ff79c6;
@@ -67,9 +67,10 @@ a.reference.internal:hover { color: #7658ee; font-weight: bold; }
     background: rgba(0,0,0,0.3); background: linear-gradient(90deg, rgba(0,0,0,0.7021009087228641) 0%, rgba(0,0,0,0.5032213569021359) 70%, rgba(0,0,0,0) 100%); }
 .wy-menu-vertical li.toctree-l1.current > a { color: #ff79c6; background: darken(#1b1b29, 3%); border: unset; }
 .wy-menu-vertical li.toctree-l1.current > a:hover { .toctree-expand { color: #943d84; } }
-.wy-menu-vertical li.toctree-l2.current > a, .wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a { color: #55a5d9; background: darken(#1b1b29, 4%); border: unset; }
+.wy-menu-vertical li.toctree-l2.current > a, .wy-menu-vertical li.toctree-l2.current > a { color: #55a5d9; background: darken(#1b1b29, 4%); border: unset; }
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a { color: #a888f4; background: darken(#1b1b29, 6%); border: unset; }
 .wy-menu-vertical li.current a { color: #bd93f9; background: darken(#1b1b29, 4%); border: unset; }
-.wy-menu-vertical li.current a:hover { color: #1ea69d; background: darken(#1b1b29, 6%); border: unset; }
+.wy-menu-vertical li.current a:hover { color: lighten(#1ea69d, 15%); background: darken(#1b1b29, 6%); border: unset; }
 .wy-menu-vertical li.toctree-l2 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l3 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l4 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l5 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l6 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l7 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l8 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l9 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l10 a:hover span.toctree-expand { color: #943d84; }
 .wy-menu-vertical li.toctree-l2 span.toctree-expand { color: #943d84; }
 // Search bar
