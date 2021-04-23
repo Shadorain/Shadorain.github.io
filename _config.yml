@@ -1,6 +1,6 @@
-title: Shadohub
+title: Shadorealm
 lang: en-US
-description: This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C and Haskell languages, Emacs+Vim, and low level (closer to binary) exploitation/reversing.
+description: This site is meant to be for sharing my daily discoveries in the vast land of technology, as I dive deeper into Linux, C Language, N/vim, and low-level exploitation/reversing.
 
 edit: false
 
@@ -26,7 +26,7 @@ sass:
 # fluid: true
 
 ## -- Copyright -- ##
-author: "Jordan Ferraris"
+author: "Shadorain"
 copyright: 
   since: 2020
   revision: false

@@ -4,7 +4,7 @@ sort: 1
 permalink: /index.html
 ---
 
-# Shadohub, the hub for shadows!
+# Shadorealm, the kingdom for shadows of light!
 {: .fs-9 }
 
 Hello! Welcome to my site! 
@@ -21,6 +21,7 @@ Click the button above or the menu on the side named `My Blog` to get to my blog
 Other things will come, some ideas are down below! My contact info is at the bottom of [About]({{site.baseurl}}{% link about.md %})
 
 ## Site Ideas
+
 - Host a CTF on here, or atleast challenges!
 - Discussion Forum
 - Coding competitions?
