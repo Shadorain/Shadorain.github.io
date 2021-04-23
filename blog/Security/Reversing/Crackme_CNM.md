@@ -1,6 +1,14 @@
-# Crackme's Not Main -- Writeup
+# Crackme Not Main - Crackme Writeup
+
+Author: kawaii-flesh
+Level: 1.0
+Quality: 4.0
+Platform: Unix/Linux
+Language: C/C++
 
 ## Introduction
+
+This crackme has been provided by [crackmes.one](https://crackmes.one).
 
 For all my solutions, I will use radare2: a fantastic terminal user interface
 reversing tool that amazes me daily on its immense potential. So when I use a
@@ -102,4 +110,4 @@ a fun crackme and my first completed without any guidance at all! Has been a
 nice learning experience for radare2 as well which is very nice.
 
 Hope you enjoy this writeup and learned a bit about radare2 and reverse engineering!
-I sure did! Thanks for reading! Shado out.
+I sure did! Thanks for reading and have a blessed day! Shado out.
