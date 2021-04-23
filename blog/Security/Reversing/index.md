@@ -19,3 +19,7 @@ has_children: true
 
 ---
 
+## Crackmes ##
+
+- [Crackme not Main](/blog/Security/Reversing/Crackme_CNM)
+- [easyAF](/blog/Security/Reversing/Crackme_easyAF)

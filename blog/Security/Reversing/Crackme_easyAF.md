@@ -1,10 +1,16 @@
+---
+layout: default
+title: "Crackme - easyAF"
+nav_order: 1
+permalink: /blog/Security/Reversing/Crackme_easyAF
+parent: Reversing
+grand_parent: Security
+has_children: false
+---
+
 # EasyAF - Crackme Writeup
 
-Author: 476f64
-Level: 1.0
-Quality: 4.0
-Platform: Unix/Linux
-Language: C/C++
+Author: 476f64 | Level: 1.0 | Quality: 4.0 | Platform: Unix/Linux | Language: C/C++
 
 ## Introduction
 

@@ -25,6 +25,11 @@ has_children: true
 
 ## Reverse Engineering ##
 
+### Crackmes ###
+
+- [Crackme - Crackme not Main](/blog/Security/Reversing/Crackme_CNM)
+- [Crackme - easyAF](/blog/Security/Reversing/Crackme_easyAF)
+
 ## Miscellaneous ##
 
 - [Exploiting LXD](/blog/Security/Exploiting-LXD/)

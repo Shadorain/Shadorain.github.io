@@ -1,10 +1,16 @@
+---
+layout: default
+title: "Crackme - Crackme not Main"
+nav_order: 1
+permalink: /blog/Security/Reversing/Crackme_CNM
+parent: Reversing
+grand_parent: Security
+has_children: false
+---
+
 # Crackme Not Main - Crackme Writeup
 
-Author: kawaii-flesh
-Level: 1.0
-Quality: 4.0
-Platform: Unix/Linux
-Language: C/C++
+Author: kawaii-flesh | Level: 1.0 | Quality: 4.0 | Platform: Unix/Linux | Language: C/C++
 
 ## Introduction
 
