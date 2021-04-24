@@ -87,13 +87,17 @@ html.writer-html4 .rst-content dl:not(.docutils) > dt, html.writer-html5 .rst-co
 .rst-content div[class^="highlight"], .rst-content pre.literal-block { border: 1px solid #bd93f9; }
 .rst-content code, .rst-content div[class^="highlight"] pre, .rst-content pre { background: #212133; }
 .highlight .nt { color: #E9729D; }
-.highlight .k, .highlight .kv { color: #4484d1; }
+.highlight .k, .highlight .kv { color: #6876de; }
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf, .highlight .c1 { color: #6272a4; }
 .highlight .o { color: #F18FB0; }
 .highlight .nb { color: #ff7ab2; }
 .highlight .nv { color: #6a5acd; }
 .highlight .s2 { color: #FF4971; }
-.highlight .nf, .highlight .fm { color: #bd93f9; }
+.highlight .nf, .highlight .fm, .highlight .err { color: #bd93f9; background: none; font-weight: bold; }
+.highlight .cp { color: #6a5acd; font-weight: bold; }
+.highlight .mi { color: #de286e; } // color: #009999; }
+.highlight .s, .highlight .sa, .highlight .dl { color: #bd93f9; }
+.highlight .cm { font-style: italic; color: #6272a4; }
 
 // --- Removal --- \\
 // Bottom Block part

@@ -24,7 +24,7 @@ command. With that out of the way let's get to the meat of it!
 
 ---
 
-## First Part
+## Part One
 ### First Check
 
 ```nasm
@@ -110,8 +110,7 @@ Look-y here its our fine solution, simple as that!
 
 ---
 
-## Second Part
-
+## Part Two
 ### Discovery
 
 Wait that was too easy, why is this codeblock so long. Let's read the disassembly.
@@ -265,9 +264,7 @@ Lets throw this into a website real quick to see what it means in readable engli
 [This](https://morsecode.world/international/translator.html) website is good enough!
 Paste the morse into there and get our final flag!
 
-```flag
-1413567809
-```
+` FLAG: 1413567809 `
 
 There it is! We have found the flag!
 
@@ -278,11 +275,11 @@ There it is! We have found the flag!
 Overthinking sure can lead one on a serious wild goose chase, but this has been
 a fun crackme and my first completed without any guidance at all! Has been a
 nice learning experience for radare2 as well which is very nice. Oh wait that was
-just [part one](#Part-One) lol.
+just [part one](#part-one) lol.
 
-In part two we dug into some more CTF style of a challenge which was a pleasant
-surprise! We had to manipulate files and even decode morse code! Was definitelly
-unexpected but quite fun!
+In [part two](#part-two) we dug into some more CTF style of a challenge which
+was a pleasant surprise! We had to manipulate files and even decode morse code!
+Was definitelly unexpected but quite fun!
 
 I hope you enjoy this writeup and learned a bit more about radare2 and reverse
 engineering, a bit more too in this challenge!  I sure did! Thanks for sticking
