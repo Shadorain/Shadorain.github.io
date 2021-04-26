@@ -23,3 +23,4 @@ has_children: true
 
 - [Crackme not Main](/blog/Security/Reversing/Crackme_CNM)
 - [easyAF](/blog/Security/Reversing/Crackme_easyAF)
+- [Guild Hall Adventure Ch. 1](/blog/Security/Reversing/Crackme_gha1)
