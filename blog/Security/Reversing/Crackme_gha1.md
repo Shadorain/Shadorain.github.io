@@ -21,7 +21,7 @@ For all my solutions, I will use radare2: a fantastic terminal user interface
 reversing tool that amazes me daily on its immense potential (with a few other
 needed tools mixed in). So when I use a `:> ` it is a radare2 shell command (from
 Visual modes you can get to this via the `:` key just like in vim). When I use
-`$> ` it is referring to a normal shell command. With that out of the way let's
+`❱ ` it is referring to a normal shell command. With that out of the way let's
 get to the meat of it!
 
 ---
