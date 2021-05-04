@@ -30,6 +30,7 @@ has_children: true
 - [Crackme - Crackme not Main](/blog/Security/Reversing/Crackme_CNM)
 - [Crackme - easyAF](/blog/Security/Reversing/Crackme_easyAF)
 - [Crackme - Guild Hall Adventure Ch. 1](/blog/Security/Reversing/Crackme_gha1)
+- [Crackme - Guild Hall Adventure Ch. 2](/blog/Security/Reversing/Crackme_gha2)
 
 ## Miscellaneous ##
 

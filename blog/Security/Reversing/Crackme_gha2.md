@@ -290,13 +290,189 @@ The logic is a little tricky so I provided some pictures of the flow to clear it
 
 ![Pic2](https://i.imgur.com/oUamSZP.png)
 
+As you can see, `argc` gets checked at the end of the first block. If it is not `1`
+then we continue to the left, else it will continue down to step 1 essentially. Okay,
+that is easy, lets just give it an argument: that will make `argc = 2`. If we set a
+breakpoint at `0x55d6310008fb`, you will see that this works. This breakpoint will
+help for the second block here as well, so follow along. There is a lot of manipulation
+in this second block so lets just check the variables by debugging at the breakpoint
+we set: (I'm using `ood 2` as the argument because remember the hint when initially
+opening of the binary ;))
+
+```nasm
+:> ood 2
+:> dc
+hit breakpoint at: 0x558893a008fb
+:> pdb
+0x558893a008c2   mov rax, qword [rbp - 0xd0]
+0x558893a008c9   add rax, 8
+0x558893a008cd   mov rax, qword [rax]
+0x558893a008d0   add rax, 1
+0x558893a008d4   mov rdi, rax            ; const char *s
+0x558893a008d7   call sym.imp.strlen     ; size_t strlen(const char *s)
+0x558893a008dc   mov rdx, rax
+0x558893a008df   mov rax, qword [rbp - 0xd0]
+0x558893a008e6   add rax, 8
+0x558893a008ea   mov rax, qword [rax]
+0x558893a008ed   movzx eax, byte [rax]
+0x558893a008f0   movsx eax, al
+0x558893a008f3   sub eax, 0x30           ; 48
+0x558893a008f6   cdqe
+0x558893a008f8   cmp rdx, rax
+;-- rip:
+0x558893a008fb b je 0x558893a00909
+:> dr ~rax,rdx
+rax = 0x00000002
+rdx = 0x00000000
+```
+
+So check it out, there is a `strlen` that throws the length of our passed in arg
+to `rdx` which gets compared at the end of the block with our `rax`. So since
+our `eax` is `2` and our `rdx` is `0`, lets try to make rdx 3 characters instead.
+
+```bash
+:> ood 200
+:> dc
+...
+```
+
+Hit step2? Good, it should have worked. Anything that starts with a too, is 3
+characters (even letters work), and not `222` will work to skip to step2!
+
+### Step 2
+
+Let's start playing with step2 now! Remember it is in a different function, so
+in radare2 if you want to seek to it use: `s sym.step2` or just to view it: 
+`pdf @ sym.step2` | `VV @ sym.step2`. 
+
+```bash
+❱ ./adventure2 200
+
+   Welcome to step 2 of chapter 2 !
+   If you see this message because you randomly played with arguments
+   but didn't complete the 1st step, please go back and run the program without arguments
+   Unless you're cheating ? meh... whatever...
+
+   BUT !! If you completed the 1st step : CONGRATULATION \o/ !!
+
+   ...
+   Damn... I painstakingly coded this whole [go directly to step 2 stuff]
+   So now i guess i really have to code a step 2
+   Don't want to do it... (Just press enter or something and we'll improvise somehow)
+
+(pressed enter)
+
+   By the way, what argument did you use to come here ? 2
+ 2 ? good good... please remember it !
+
+  (Press enter or whatever, who care ?)
+
+```
+
+So at this point we get more dialog, we successfully got to step 2 without cheating!
+Can safely hit enter the first time, for the second input it is just a `getchar` so
+it will only take one character but it doesn't matter too much, it will overflow to
+the other inputs though if you give it too much. Hit enter again after you put a
+number in:
+
+```bash
+- So you want to register to the guild ? Math question then !
+- it's totally not because i'm lazy or anything ! Bakkaaaa~ !
+what's 2 + 3 * 5 ? 
+```
+
+Oh we get a math question! Looks easy enough! `17` should be the right answer here
+unless im just stupid lol... 
+
+```bash
+BWAHAHAHAHA BAKAAAAAAAA !!! 0x44ab8d14 is super totally wrooong !
+Segmentation fault (core dumped)
+
+...
+
+Segmentation fault
+```
+
+Am I that stupid, he is calling be a BAKA (idiot in Japanese lol)? No haha obviously
+not, that math question isn't real and is just to throw us off from the disassembly.
+Let's set a breakpoint at `0x561b3d400f17` (the jump line after the compare) and see
+what the values being compared are:
+
+```nasm
+:> db 0x561b3d400f17
+:> dc
+- So you want to register to the guild ? Math question then !
+- it's totally not because i'm lazy or anything ! Bakkaaaa~ !
+what's 2 + 3 * 5 ? 17
+hit breakpoint at: 0x561b3d400f17
+:> pdb ~cmp,je
+│           0x561b3d400f14      3945ec         cmp dword [rbp - 0x14], eax
+│       ╭─< 0x561b3d400f17 b    7445           je 0x561b3d400f5e
+```
+
+Now, I wouldn't have caught this so easily my first time through without my handy
+dandy visual panel layout in radare2. You can do anything with this panel mode and
+nothing makes me happier than something that lets me make it my own. This made it
+super simple and efficient for me to check the variables and everything else.
+
+![panels](https://i.imgur.com/UVXhAC1.png)
+
+Take a look at `var_14h` though! That is what is being compared with our input...
+`65`. Let's try it!
+
+```bash
+what's 2 + 3 * 5 ? 65
+BWAHAHAHAHA BAKAAAAAAAA !!! 0xedea1884 is super totally wrooong !
+Segmentation fault (core dumped)
+
+...
+
+ho damn, that's right...
+WHY ?
+
+To be continued... (you really succeded but i'll kill you anyway. don't worry, you'll be fine)
+
+Segmentation fault
+```
+
+Would you look at that! We beat step two! The first "Segmentation fault (core dumped)"
+is actually a made-up function that prints that to throw us off, the second Segfault
+though is on purpose and is a real segfault that happens due to calling `rdx` I believe.
+It seems that rdx may hold a function pointer that isn't allocated or something of the
+sort, but don't quote me on it! Either way it was a pretty cool way to misguide the
+challenger. Didn't stump us though!
+
+## Recap
+
+### Step 1
+
+We first are prompted with a readme and to hit enter. Hit it once, but after that we had
+to figure out the right input. Remember what it was? Yep! `Hello` one letter at a time which
+got us to step 2 (after 2 more enters).
+
+### Step 2
+
+First, we cracked the shortcut key to skip step1 to test more efficiently in step2. The key
+is anything that starts with a `2` and is 3 characters long, `200` works perfect.
+
+Rerun the binary with `200` or the key you want as an argument.
+
+Next, when prompted we hit enter, then put in a number that we used to get to step 2. Just
+throw `2` in there, it doesn't matter much and hit enter. We then are prompted with a math
+question that is just to misguide so we dug into the disassembly and look closely at the
+compare which is comparing our input to `65`. Try that for the input and we are golden after
+a few more enter presses!
+
 ---
 
 ## Closing
 
-Hope you enjoyed this writeup, it isn't much partly because the crackme itself
-wasn't much but atleast we did it! This one was super fun because it's a story
-and stories make everything better!
+Hope you enjoyed this writeup! This one was pretty long, atleast this blog post is. Can just
+skip to [recap](#recap) to get past all the explanation and right to the solution.
+
+This second part of the Guild Hall Adventure story has been a blast though! Really odd not
+going to lie but still has been fun! Hope you guys enjoyed it like I did!
+
 Thanks for reading and have a blessed day!
 Shado out.
 
